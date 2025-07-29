@@ -1,0 +1,14 @@
+Fluorophore,"Emmision maximum [nm]","Diffusion coefficient in water at 25°C (298.15 K) [10-6 cm2s-1]",uncertainty
+Atto655-maleimid,686,04.07,0.10
+Atto655-carboxylic acid,685,4.26,0.08
+Atto655-NHS esther,685,4.25,0.06
+Cy5,670,3.6,0.1
+Alexa 647,665,3.3,0.1
+Alexa 633,647,3.4,0.1
+Rhodamine 6G,550,4.3,0.4
+Rhodamine B,560,4.27,0.04
+Rhodamine 123,530,4.6,0.4
+Rhodamine 110,535,4.7,0.4
+Fluorescein,520,4.25,0.01
+Oregon Green 488,550,4.11,0.06
+Atto488-carboxylic acid,523,4.0,0.1
