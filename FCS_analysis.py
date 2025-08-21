@@ -85,6 +85,7 @@ class FCS_Analyzer:
             'w0_err': w0_values.std(),
             'confocal_volume': confocal_volume.mean(),
             'confocal_volume_err': confocal_volume.std()
+
         }
 
     @staticmethod

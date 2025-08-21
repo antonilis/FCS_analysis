@@ -19,4 +19,4 @@ def calculate_probe_diffusion_coefficient(D1, T_C):
 
 workspace_file_name = 'workspace.dct'
 probes_diffusion_data = pd.read_csv(
-            'C:/Users\Antoni Lis/Desktop/programy_python/FCS_analysis/picoQuant_data/diffusion_coefficients.csv')
+            'C:/Users\Adam/PycharmProjects/picoQuant_data/diffusion_coefficients.csv')

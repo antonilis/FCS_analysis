@@ -8,7 +8,7 @@ def G_1comp(tau, N, tau_D, kappa):
 
 
 def G_1comp_triplet(tau, N, T, tau_trip, tau_D, kappa):
-    triplet_term = (1 + T * np.exp(-tau / tau_trip)) / (1 - T)
+    triplet_term = (1 + T/ (1 - T)) * np.exp(-tau / tau_trip)
     return (1 / N) * triplet_term * (1 / (1 + tau / tau_D)) * (1 / np.sqrt(1 + tau / (kappa ** 2 * tau_D)))
 
 
