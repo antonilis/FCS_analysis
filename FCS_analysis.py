@@ -8,7 +8,7 @@ import glob
 from FCS_fitting_models import FCS_fitting_functions
 from utils import calculate_Rh, calculate_probe_diffusion_coefficient, workspace_file_name, probes_diffusion_data
 
-
+# zmień calibration probe i wtedy dajesz
 class FCS_Analyzer:
 
     def __init__(self, calibration_probe, temperature=25, calibration_path=None, measurement_path=None):
@@ -72,11 +72,12 @@ class FCS_Analyzer:
         return data
 
     def calculate_geometry(self, data_df):
-        w0_values = 2 * np.sqrt(
-            self.calibration_probe['Diffusion Coefficient'] * data_df['tau_d1'] / 1000
-        )
+
+
+        w0_values = 2 * np.sqrt(self.calibration_probe['Diffusion Coefficient'] * data_df['tau_d1'] / 1000)
 
         confocal_volume = np.pi ** (3 / 2) * w0_values ** 3 * data_df['kappa']
+
 
         self.calibration_parameters = {
             'kappa': data_df['kappa'].mean(),
