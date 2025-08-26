@@ -8,14 +8,15 @@ import glob
 from FCS_fitting_models import FCS_fitting_functions
 from utils import calculate_Rh, calculate_probe_diffusion_coefficient, workspace_file_name, probes_diffusion_data
 
-# zmień calibration probe i wtedy dajesz
+
 class FCS_Analyzer:
 
-    def __init__(self, calibration_probe, temperature=25, calibration_path=None, measurement_path=None):
+    def __init__(self, calibration_probe, temperature=25, calibration_path=None, measurement_path=None, solvent='water'):
 
         self.calibration_path = calibration_path
         self.measurement_path = measurement_path
         self.temperature = temperature
+        self.solvent = solvent
 
         self.calibration_probe = self.get_calibration_probe(calibration_probe)
 
@@ -47,10 +48,14 @@ class FCS_Analyzer:
 
     def get_calibration_probe(self, probe):
         mask = probes_diffusion_data[probes_diffusion_data['Fluorophore'] == probe]
+        if self.solvent == 'water':
+            D1 = mask['Diffusion coefficient in water at 25°C (298.15 K) [10-6 cm2s-1]'].iloc[0]
+        elif self.solvent == 'ethanol':
+            D1 = mask['Diffusion coefficient in EtOH at 25°C (298.15 K) [10-6 cm2s-1]'].iloc[0]
+        else:
+            raise ValueError('Available solvents are: water and ethanol')
 
-        D1 = mask['Diffusion coefficient in water at 25°C (298.15 K) [10-6 cm2s-1]'].iloc[0]
-
-        D2 = calculate_probe_diffusion_coefficient(D1, self.temperature)
+        D2 = calculate_probe_diffusion_coefficient(D1, self.temperature, self.solvent)
         Rh = calculate_Rh(D2, self.temperature)
 
         final_probe = {'probe': probe, 'Diffusion Coefficient': D2, 'Temperature': self.temperature,
